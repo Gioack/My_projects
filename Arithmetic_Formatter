@@ -1,0 +1,29 @@
+def arithmetic_arranger(problems):
+    if ('-' not in problems) and ('+' not in problems):
+        print('The operation must be a sum or a difference')
+        quit()
+    problems = problems.split(',')
+    firstpart = list()
+    secondpart = list()
+    string_that_haveallthefirstpart = ''
+    string_that_haveallthesecondpart = ''
+    for x in problems:
+        where_plus = x.find('+')
+        where_minus = x.find('-')
+        firstpart.append('  '+x[:max(where_plus, where_minus)])
+        secondpart.append('  '+x[max(where_plus, where_minus):])
+         # this is usuless make it string directly
+    print(firstpart)
+    print(secondpart)
+    for x in range(len(firstpart)):
+        string_that_haveallthefirstpart = string_that_haveallthefirstpart + firstpart[x]
+        string_that_haveallthesecondpart = string_that_haveallthesecondpart + secondpart[x]
+    print(string_that_haveallthefirstpart)
+    print(string_that_haveallthesecondpart)
+# Build a for loop and inside a while that is able to make each item on the same lenght.
+# Resplit strings.
+
+    # return arranged_problems
+# x = 65 - 3
+# print(x)
+arithmetic_arranger(input('Insert the numbers: '))
