@@ -1,86 +1,79 @@
 def arithmetic_arranger(problems, Show_result = False):
-    Control_length(problems)
-    Control_Operator(problems)
-    Control_Existence_numbers(problems)
-    Control_length_numbers(problems)
-
+    if Control_length(problems) == True:
+        return "Error: Too many problems."
+    if Control_Operator(problems) == True:
+        return "Error: Operator must be '+' or '-'."
+    if Control_Existence_numbers(problems) == True:
+        return "Error: Numbers must only contain digits."
+    if Control_length_numbers(problems) == True:
+        return "Error: Numbers cannot be more than four digits."
 # The upper code explict that the input can only be composed of digits and ""
-# and at the most one "+" or  "-" for each operation
+# and at the most one "+" or  "-" for each problem
     allthefirstpart = ""
     allthesecondpart = ""
     Dashes = ""
-    Sum = ""
-    for each_operation in problems:                          #123 + 49
-        where_plus = each_operation.find('+')
-        where_minus = each_operation.find('-')
-        Where_plus_or_minus = max(each_operation.find('+'), each_operation.find('-')) #
-        each_operation_part1 = "  " + each_operation[:Where_plus_or_minus].strip() #  33
-        # The code looks like this and not simply like: each_operation_part2 = each_operation[Where_plus_or_minus:]
+    Results = ""
+    for each_problem in problems:
+        Where_plus_or_minus = max(each_problem.find('+'), each_problem.find('-'))
+        each_problem_part1 = "  " + each_problem[:Where_plus_or_minus].strip()
+        # The code looks like this and not simply like: each_problem_part2 = each_problem[Where_plus_or_minus:]
         # because of cases like "     3 +     3", it makes these situations completely fine
-        each_operation_part2 = each_operation[Where_plus_or_minus]+ " " + each_operation[Where_plus_or_minus + 1:].strip()          #+ 332
-#       TRYING SYSTEM SPACES AND OTHER
-
-# BIG PROBLEM WHEN THERE IS 3 DIGITS UP AND 2 DIGITS DOWN
-        if len(each_operation_part1) >= len(each_operation_part2):
-            while len(each_operation_part1) > len(each_operation_part2):
-                each_operation_part2 = each_operation_part2[:2] + " " + each_operation_part2[2:]
-        if len(each_operation_part2) > len(each_operation_part1):
-            while len(each_operation_part2) > len(each_operation_part1):
-                each_operation_part1 = " " + each_operation_part1
-        Sum_of_2parts = str(int(each_operation_part1.strip()) + int(each_operation_part2[2:].strip()))
-        while len(Sum_of_2parts) < len(each_operation_part1):
-            Sum_of_2parts = " " +  Sum_of_2parts
+        each_problem_part2 = each_problem[Where_plus_or_minus]+ " " + each_problem[Where_plus_or_minus + 1:].strip()
+        if len(each_problem_part1) >= len(each_problem_part2):
+            while len(each_problem_part1) > len(each_problem_part2):
+                each_problem_part2 = each_problem_part2[:2] + " " + each_problem_part2[2:]
+        if len(each_problem_part2) > len(each_problem_part1):
+            while len(each_problem_part2) > len(each_problem_part1):
+                each_problem_part1 = " " + each_problem_part1
+        if '+' in each_problem:
+            Result_of_2parts = str(int(each_problem_part1.strip()) + int(each_problem_part2[2:].strip()))
+        else:
+            Result_of_2parts = str(int(each_problem_part1.strip()) - int(each_problem_part2[2:].strip()))
+        while len(Result_of_2parts) < len(each_problem_part1):
+            Result_of_2parts = " " +  Result_of_2parts
         if (allthefirstpart == ""):
-            allthefirstpart = each_operation_part1
-            allthesecondpart = each_operation_part2
-            Sum = Sum_of_2parts
-            for digit in range(len(each_operation_part1)):
+            allthefirstpart = each_problem_part1
+            allthesecondpart = each_problem_part2
+            Results = Result_of_2parts
+            for digit in range(len(each_problem_part1)):
                 Dashes = Dashes + '-'
         else:
-            allthefirstpart = allthefirstpart + "    " + each_operation_part1
-            allthesecondpart = allthesecondpart + "    " + each_operation_part2
-            Sum = Sum + "    " + Sum_of_2parts
+            allthefirstpart = allthefirstpart + "    " + each_problem_part1
+            allthesecondpart = allthesecondpart + "    " + each_problem_part2
+            Results = Results + "    " + Result_of_2parts
             Dashes = Dashes + "    "
-            for digit in range(len(each_operation_part1)):
+            for digit in range(len(each_problem_part1)):
                 Dashes = Dashes + '-'
     all = allthefirstpart + "\n" + allthesecondpart + "\n" + Dashes
     if Show_result == True:
-        all = allthefirstpart + "\n" + allthesecondpart + "\n" + Dashes + "\n" + Sum
+        all = allthefirstpart + "\n" + allthesecondpart + "\n" + Dashes + "\n" + Results
     return all
 # Build a for loop and inside a while that is able to make each item on the same lenght.
 # Resplit strings.
 # arithmetic_arranger(input('Insert the numbers: '))
 def Control_length(problems):
     if len(problems) > 5:
-        return "Error: Too many problems."
-        quit()
+        return True
 def Control_Operator(problems):
     for each_problem in problems:
         if (each_problem.find('-') < 0) and (each_problem.find('+') < 0) :
-            return "Error: Operator must be '+' or '-'."
-            quit()
+            return True
 def Control_Existence_numbers(problems):
-    for each_operation in problems:
-        each_operation = each_operation.replace("+","")
-        each_operation = each_operation.replace("-","")
-        each_operation = each_operation.replace(" ","")
-        if each_operation == "":
-            return "Error: Numbers must only contain digits."
-            quit()
-        for each_letter in each_operation:
-            if not each_letter.isdigit():
-                return "Error: Numbers must only contain digits."
-                quit()
+    for each_problem in problems:
+        for each_digit in each_problem:
+            if not ((each_digit.isdigit() == True) or (each_digit == "+") or (each_digit == "-") or (each_digit == " ")):
+                return True
+
 def Control_length_numbers(problems):
-        for each_operation in problems:
-                if each_operation.find("+") > -1:
-                    Numbers_as_a_list = each_operation.split("+")
+        for each_problem in problems:
+                if "+" in each_problem:
+                    Numbers_as_a_list = each_problem.split("+")
                 else:
-                    Numbers_as_a_list = each_operation.split("-")
+                    Numbers_as_a_list = each_problem.split("-")
                 for number in Numbers_as_a_list:
                     number = number.strip()
                     if len(number) > 4:
-                        return "Error: Numbers cannot be more than four digits."
-                        quit()
+                        return True
 
-print(arithmetic_arranger(["  3 + 6", "33 - 2", "4 + 433", "1 + 4933", "33 + 6", "3 + 2"], True))
+
+print(arithmetic_arranger(["  3 + 6", "33 - 2", "4 + 433", "1 + 4933", "33 + 6d"], True))
