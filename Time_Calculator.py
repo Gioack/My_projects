@@ -1,4 +1,4 @@
-def add_time(start, duration, day_started = ""): # 9:00 PM 3
+def add_time(start, duration, day_started = ""):
     Days_of_Week=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     IsAM = ""
     Days_after = 0
@@ -8,14 +8,12 @@ def add_time(start, duration, day_started = ""): # 9:00 PM 3
     else:
         start = start.replace("PM", "")
         IsAM = False
-    start = start.split(":")
-    duration = duration.split(":")
-    ResultMinutes = (int(start[1]) + int(duration[1])) % 60
-    Hours_to_add_from_Minutes = ((int(start[1]) + int(duration[1])) - ResultMinutes) / 60
-    Hours_to_add = int(duration[0]) + int(Hours_to_add_from_Minutes) #"11:55 PM", "24:08"
-    start[0] = int(start[0])
+    start = [int(x) for x in start.split(":")]
+    duration = [int(x) for x in duration.split(":")]
+    ResultMinutes = (start[1] + duration[1]) % 60
+    Hours_to_add_from_Minutes = (start[1] + duration[1] - ResultMinutes) / 60
+    Hours_to_add = duration[0] + Hours_to_add_from_Minutes
     while Hours_to_add > 0:
-        print(start[0])
         start[0] = start[0] + 1
         Hours_to_add = Hours_to_add - 1
         if (start[0] == 12) and (IsAM == True):
@@ -23,10 +21,8 @@ def add_time(start, duration, day_started = ""): # 9:00 PM 3
         elif (start[0] == 12) and (IsAM == False):
             IsAM = True
             Days_after = Days_after + 1
-            print("Days_after" , Days_after)
         if (start[0] > 12):
             start[0] = start[0] - 12
-    start[0] = str(start[0])
     if ResultMinutes < 10:
         ResultMinutes = "0" + str(ResultMinutes)
     Result =str(start[0]) + ":" + str(ResultMinutes)
@@ -44,7 +40,6 @@ def add_time(start, duration, day_started = ""): # 9:00 PM 3
         Result = Result + " (next day)"
     if Days_after >= 2:
         Result = Result + " (" + str(Days_after) + " days later)"
-
     return Result
 
-print(add_time("11:59 PM", "24:05", "Wednesday"))
+print(add_time("5:30 PM", "24:30", "Wednesday"))
