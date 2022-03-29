@@ -12,32 +12,24 @@ def add_time(start, duration, day_started = ""): # 9:00 PM 3
     duration = duration.split(":")
     ResultMinutes = (int(start[1]) + int(duration[1])) % 60
     Hours_to_add_from_Minutes = ((int(start[1]) + int(duration[1])) - ResultMinutes) / 60
-    ResultHour = (int(start[0]) + int(duration[0]) + int(Hours_to_add_from_Minutes)) #"11:55 PM", "24:08"
-    ResultHour_Copy = ResultHour
-    if IsAM is True:
-        while (ResultHour_Copy / 24) > 1:
+    Hours_to_add = int(duration[0]) + int(Hours_to_add_from_Minutes) #"11:55 PM", "24:08"
+    start[0] = int(start[0])
+    while Hours_to_add > 0:
+        print(start[0])
+        start[0] = start[0] + 1
+        Hours_to_add = Hours_to_add - 1
+        if (start[0] == 12) and (IsAM == True):
+            IsAM = False
+        elif (start[0] == 12) and (IsAM == False):
+            IsAM = True
             Days_after = Days_after + 1
-            ResultHour_Copy = ResultHour_Copy - 24
-    else:
-        if ResultHour < 12:
-            Days_after = 0
-        elif (((ResultHour/24) / 12) > 1) or ((12 - int(start[0]) < 1)):
-            ResultHour_Copy = ResultHour_Copy - (12 - int(start[0]))
-            Days_after = 1
-            IsAM = not IsAM
-            while (ResultHour_Copy / 24) > 1:
-                Days_after = Days_after + 1
-                ResultHour_Copy = ResultHour_Copy - 24
-        else:
-            while (ResultHour_Copy / 24) > 1:
-                Days_after = Days_after + 1
-                ResultHour_Copy = ResultHour_Copy - 24
-    while ResultHour > 12:
-        ResultHour = ResultHour - 12
-        IsAM = not IsAM
+            print("Days_after" , Days_after)
+        if (start[0] > 12):
+            start[0] = start[0] - 12
+    start[0] = str(start[0])
     if ResultMinutes < 10:
         ResultMinutes = "0" + str(ResultMinutes)
-    Result =str(ResultHour) + ":" + str(ResultMinutes)
+    Result =str(start[0]) + ":" + str(ResultMinutes)
     if IsAM == True:
         Result = Result + " AM"
     else:
@@ -55,6 +47,4 @@ def add_time(start, duration, day_started = ""): # 9:00 PM 3
 
     return Result
 
-
-    # return new_time
-print(add_time("11:10 PM", "48:10"))
+print(add_time("11:59 PM", "24:05", "Wednesday"))
