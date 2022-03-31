@@ -3,19 +3,19 @@ class Category:
         self.name = name
         self.balance = 0.0
         self.ledger = list()
-        self.alldescriptions = "" # maybe bad but used to shut that shit of reference up.
 
     def __repr__(self):
-        while len(self.name) <= 30:
-            self.name = "*" + self.name + "*"
+        self.items = ""
+        self.nameCopy = self.name
+        while len(self.nameCopy) <= 30:
+            self.nameCopy = "*" + self.nameCopy + "*"
         for x in range(len(self.ledger)):
             while len(self.ledger[x]["description"]) <= 23:
                 self.ledger[x]["description"] = self.ledger[x]["description"] + " "
             while len(str(self.ledger[x]["amount"])) <= 7:
                 self.ledger[x]["amount"] = " " + str(self.ledger[x]["amount"])
-            # self.each_descriptions_and_amounts = self.ledger[x]["description"][:24] + self.ledger[x]["amount"][:7]
-            self.alldescriptions = self.alldescriptions + (self.ledger[x]["description"][:24] + self.ledger[x]["amount"][:8] + "\n")
-        return self.name + "\n" + self.alldescriptions + "Total: " + str(self.balance)
+            self.items = self.items + (self.ledger[x]["description"][:24] + self.ledger[x]["amount"][:8] + "\n")
+        return self.nameCopy + "\n" + self.items + "Total: " + str(self.balance)
     def deposit(self, amount, description):
         self.ledger.append({"amount": amount, "description": description})
         self.balance = self.balance + amount
@@ -47,11 +47,31 @@ a.deposit(50,"Santa Claus arrivedsdsds  ")
 a.withdraw(23, "fuck tyou")
 a.transfer(30, b)
 a.transfer(30, b)
-print(a.ledger)
 # a.transfer(1, c)
 # print(a.get_balance())
 # print(b.get_balance())
 # print(c.get_balance())
 # print(b.ledger)
-print(a)
-# def create_spend_chart(categories):
+# print(a)
+# print(b)
+# print(c)
+def create_spend_chart(Categories_list):
+    Footer = ""
+    count = 0
+    for Category in Categories_list:
+        if Footer == "":
+            for Letter in Category.name:
+                Footer = Footer + "    " + Letter + "\n"
+        else:
+            Footer = Footer.split("\n")
+            for Letter in Category.name:
+                if Category.name.index(Letter) > len(Footer):
+                    while len(Letter) <= len(Footer[1]):
+                        Letter = " " + Letter
+                    Footer.append(Letter)
+                else:
+                    Footer[Category.name.index(Letter)] = Footer[Category.name.index(Letter)] + " " + Letter
+            Footer = Footer.join("\n")
+    print(Footer)
+        # for Letter in Category:
+create_spend_chart([a, b, c])
