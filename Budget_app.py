@@ -39,11 +39,13 @@ class Category:
     def get_balance(self):
         return self.balance
 a = Category("food")
-b = Category("hellosdasdsad")
-c = Category("endsfdsfsd")
+b = Category("dddddddddddd")
+c = Category("ffffffffffff")
+d = Category("wwwwwwwwwwwww")
+e = Category("hhhhhhhhhhhhhhhhh")
 a.deposit(50,"Santa Claus arrived")
 a.deposit(50,"Santa Claus arrived")
-a.deposit(50,"Santa Claus arrivedsdsds  ")
+a.deposit(50,"Santa Claus arrivedsdsdswwwwwwww")
 a.withdraw(23, "fuck tyou")
 a.transfer(30, b)
 a.transfer(30, b)
@@ -57,24 +59,36 @@ a.transfer(30, b)
 # print(c)
 def create_spend_chart(Categories_list):
     Footer = ""
-    for Category in Categories_list:            # f o o d
+    Dashes = "   "
+    for Category in Categories_list:
         Index = 0
         # THIS CREATES THE FOOTER OF OUR FINAL STRING
-        if Footer == "":                        # h e l l o
+        if Footer == "":
             for Letter in Category.name:
                 Footer = Footer + "    " + Letter + "\n"
-                print(Footer)
         else:
             Footer = Footer.rstrip().split("\n")
-            print(Footer)
             for Letter in Category.name:
                 if Index <= (len(Footer)-1):
                     Footer[Index] = Footer[Index] + "  " + Letter
                 elif Index > len(Footer)-1:
-                    while len(Letter) != len(Footer[0]):
+                    while len(Letter) < len(Footer[0]):
                         Letter = " " + Letter
                     Footer.append(Letter)
                 Index = Index + 1
             Footer = "\n".join(Footer)
-    print(Footer)
-create_spend_chart([a, b, c])
+    while len(Dashes) <= (len(Footer.split("\n")[0])+ 1):
+         Dashes = Dashes + "-"
+    Footer = Dashes + "\n" + Footer
+    Graph_bar = ""
+    # The following crates Graph_bar
+    for x in range(1,10):
+        Graph_bar = " " + str(x*10) + "|" + "\n" + Graph_bar
+    Graph_bar = "100|" + "\n" + Graph_bar
+    Graph_bar = Graph_bar.split("\n")
+    for each_number in Graph_bar:
+        if each_number[:3].strip() < difference:
+             each_number = each_number + "  o"
+    print(Graph_bar)
+
+create_spend_chart([a, b, c, d, e])
