@@ -39,8 +39,8 @@ class Category:
     def get_balance(self):
         return self.balance
 a = Category("food")
-b = Category("clothing")
-c = Category("entertainment")
+b = Category("hellosdasdsad")
+c = Category("endsfdsfsd")
 a.deposit(50,"Santa Claus arrived")
 a.deposit(50,"Santa Claus arrived")
 a.deposit(50,"Santa Claus arrivedsdsds  ")
@@ -57,21 +57,24 @@ a.transfer(30, b)
 # print(c)
 def create_spend_chart(Categories_list):
     Footer = ""
-    count = 0
-    for Category in Categories_list:
-        if Footer == "":
+    for Category in Categories_list:            # f o o d
+        Index = 0
+        # THIS CREATES THE FOOTER OF OUR FINAL STRING
+        if Footer == "":                        # h e l l o
             for Letter in Category.name:
                 Footer = Footer + "    " + Letter + "\n"
+                print(Footer)
         else:
-            Footer = Footer.split("\n")
+            Footer = Footer.rstrip().split("\n")
+            print(Footer)
             for Letter in Category.name:
-                if Category.name.index(Letter) > len(Footer):
-                    while len(Letter) <= len(Footer[1]):
+                if Index <= (len(Footer)-1):
+                    Footer[Index] = Footer[Index] + "  " + Letter
+                elif Index > len(Footer)-1:
+                    while len(Letter) != len(Footer[0]):
                         Letter = " " + Letter
                     Footer.append(Letter)
-                else:
-                    Footer[Category.name.index(Letter)] = Footer[Category.name.index(Letter)] + " " + Letter
-            Footer = Footer.join("\n")
+                Index = Index + 1
+            Footer = "\n".join(Footer)
     print(Footer)
-        # for Letter in Category:
 create_spend_chart([a, b, c])
