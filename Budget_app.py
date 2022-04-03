@@ -1,3 +1,4 @@
+## python Budget_app.py
 class Category:
     def __init__(self, name):
         self.name = name
@@ -5,28 +6,42 @@ class Category:
         self.ledger = list()
 
     def __repr__(self):
+        Copy_ledger = self.ledger[:]
         self.items = ""
         self.nameCopy = self.name
-        while len(self.nameCopy) <= 30:
+        print(self.ledger)
+        while len(self.nameCopy) <= 28:
             self.nameCopy = "*" + self.nameCopy + "*"
-        for x in range(len(self.ledger)):
-            while len(self.ledger[x]["description"]) <= 23:
-                self.ledger[x]["description"] = self.ledger[x]["description"] + " "
-            while len(str(float(self.ledger[x]["amount"]))) <= 7:
-                self.ledger[x]["amount"] = " " + str(self.ledger[x]["amount"])
-            self.items = self.items + (self.ledger[x]["description"][:24] + self.ledger[x]["amount"][:8] + "\n")
-        return self.nameCopy + "\n" + self.items + "Total: " + str(self.balance)
+        for x in range(len(Copy_ledger)):
+            while len(Copy_ledger[x]["description"]) <= 22:
+                Copy_ledger[x]["description"] = Copy_ledger[x]["description"] + " "
+            Copy_ledger[x]["amount"] = "{:.2f}".format(Copy_ledger[x]["amount"])
+            while len(str(Copy_ledger[x]["amount"])) <= 6:
+                Copy_ledger[x]["amount"] = " " + str(Copy_ledger[x]["amount"])
+            self.items = self.items + (Copy_ledger[x]["description"][:23] + Copy_ledger[x]["amount"][:7] + "\n")
+        for Dictionary in self.ledger:
+            Dictionary["description"] = Dictionary["description"].strip()
+            if Dictionary["amount"][-3:] == ".00":
+                Dictionary["amount"] = int(Dictionary["amount"][:-3].strip())
+            else:
+                Dictionary["amount"] = float(Dictionary["amount"].strip())
+        print(self.ledger)
+        return self.nameCopy + "\n" + self.items + "Total: " + self.get_balance()
     def deposit(self, amount, description= ""):
+        try:
+            int(amount)
+        except:
+            float(amount)
         self.ledger.append({"amount": amount, "description": description})
-        self.balance = self.balance + amount
+        self.balance = self.balance + float(amount)
     def check_funds(self, amount):
-        if amount > self.balance:
+        if float(amount) > self.balance:
             return False
         return True
     def withdraw(self, amount, description= ""):
         if self.check_funds(amount) == True:
-            self.ledger.append({"amount": - amount, "description": description})
-            self.balance = self.balance - amount
+            self.ledger.append({"amount": -amount, "description": description})
+            self.balance = self.balance - float(amount)
             return True
         else:
             return False
@@ -37,7 +52,8 @@ class Category:
             return True
         return False
     def get_balance(self):
-        return self.balance
+        balance_displayed_well = "{:.2f}".format(self.balance)
+        return balance_displayed_well
     def Percentage_spent(self):
         Alldeposited = 0
         Allwithdrawed = 0
@@ -50,27 +66,20 @@ class Category:
         Percentage = round((Allwithdrawed*100)/Alldeposited)
         return Percentage
 
-a = Category("food")
-b = Category("dddddddddddd")
-c = Category("ffffffffffff")
-d = Category("wwwwwwwwwwwww")
+a = Category("Business")
+b = Category("Food")
+c = Category("Entertainment")
+d = Category("wwwwwww")
 e = Category("hhhhhhhhhhhhhhhhh")
 a.deposit(50,"Santa Claus arrived")
-a.withdraw(50, "fuck tyou")
-b.deposit(50,"Santa Claus arrived")
+a.withdraw(12.5, "fuck tyou")
+b.deposit(12.5,"Santa Claus arrived")
 b.withdraw(10, "fuck tyou")
 c.deposit(50,"Santa Claus arrived")
 c.withdraw(40, "fuck tyou")
 d.deposit(50,"Santa Claus arrived")
 d.withdraw(10, "fuck tyou")
-
-# a.transfer(1, c)
-
-# print(b.get_balance())
-# print(c.get_balance())
-# print(a)
-# print(b)
-# print(c)
+a.transfer(1, c)
 def create_spend_chart(Categories_list):
     Footer = ""
     Dashes = "    "
@@ -104,6 +113,7 @@ def create_spend_chart(Categories_list):
     Graph_bar = [" " + str(x*10) + "|" if not x == 10 else "100|" for x in range(1,11)]
     # Graph_bar.append("100|")
     Graph_bar.reverse()
+    Graph_bar.append("  0|")
     print(Graph_bar)
     Isfirst = True
     for Category in Categories_list:
@@ -123,4 +133,6 @@ def create_spend_chart(Categories_list):
     Graph_bar = "\n".join(Graph_bar)
     Final_result = "Percentage spent by category\n" + Graph_bar +"\n"+ Footer
     return Final_result
+# create_spend_chart([a, b,c,d])
 print(create_spend_chart([a, b,c,d]))
+print("Percentage spent by category\n100|          \n 90|          \n 80|          \n 70|    o     \n 60|    o     \n 50|    o     \n 40|    o     \n 30|    o     \n 20|    o  o  \n 10|    o  o  \n  0| o  o  o  \n    ----------\n     B  F  E  \n     u  o  n  \n     s  o  t  \n     i  d  e  \n     n     r  \n     e     t  \n     s     a  \n     s     i  \n           n  \n           m  \n           e  \n           n  \n           t  ")
