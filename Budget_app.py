@@ -64,28 +64,33 @@ class Category:
                 Allwithdrawed = abs(Allwithdrawed + float(DicTransaction["amount"]))
         Percentage = round(((Allwithdrawed*100)/Alldeposited),-1)
         return Percentage
-
-a = Category("Business")
+# THINGS THAT CREATE CLASSES
+a = Category("dsfdsfsdef")
 b = Category("Food")
-c = Category("Entertainment")
+c = Category("Business")
 d = Category("wwwwwww")
 e = Category("hhhhhhhhhhhhhhhhh")
+f = Category("sdsda")
+g = Category("hhhhhhhhhhh   #@      hhhhhh")
 a.deposit(50,"Santa Claus arrived")
-# a.withdraw(12.5, "fuck tyou")
+a.withdraw(12.5, "Thiefs arrived")
 b.deposit(100,"Santa Claus arrived")
-b.withdraw(70, "fuck tyou")
+b.withdraw(70, "Thiefs arrived")
 c.deposit(100,"Santa Claus arrived")
-c.withdraw(20, "fuck tyou")
+c.withdraw(20, "Thiefs arrived")
 d.deposit(30,"Santa Claus arrived")
-d.withdraw(10, "fuck tyou")
-# print(a.Percentage_spent())
-# print(b)
-# print(c.Percentage_spent())
-# print(d.Percentage_spent())
+d.withdraw(10, "Thiefs arrived")
+e.deposit(30,"Santa Claus arrived")
+e.withdraw(10, "Thiefs arrived")
+f.deposit(30,"Santa Claus arrived")
+f.withdraw(29, "Thiefs arrived")
+g.deposit(30,"Santa Claus arrived")
+g.withdraw(10, "Thiefs arrived")
+print(a)
+print(f)
 def create_spend_chart(Categories_list):
     Footer = ""
     Dashes = "    "
-    # List_of_Category_names = list()
     for Category in Categories_list:
         Index = 0
         # THIS CREATES THE FOOTER OF OUR FINAL STRING
@@ -94,45 +99,28 @@ def create_spend_chart(Categories_list):
                 Footer = Footer + "     " + Letter + "\n"
         else:
             Footer = Footer.rstrip().split("\n")
+              #rstrip is here for eliminating the empty element that would be created
             for Letter in Category.name:
-                # if Index <= (len(List_of_Category_names[-1])-1):
-                #     Footer[Index] = Footer[Index] + "  " + Letter
-                # elif Index > len(List_of_Category_names[-1])-1:
-                #     while len(Letter) < len(Footer[0]):
-                #         Letter = " " + Letter
-                #     Footer.append(Letter)
-                # Index = Index + 1
-            # Footer = "\n".join(Footer)
                 if Index == 0:
-                    # print(Letter.replace(" ","sd"))
                     Footer[Index] = Footer[Index] + "  " + Letter.strip()
-                    # print(Letter.replace(" ","sd"))
                 elif Index > 0:
-                # it's the longest word, it's not the longest but it's longer than the previous one
+                # the following covers 2 Scenarios:
+                # scenario where the word is not the longest but it's longer than the previous one
                     if Index <= len(Footer)-1:
                         Footer[Index] = Footer[Index] + "  " + Letter
                         while len(Footer[Index]) < len(Footer[0]):
                             Footer[Index] = Footer[Index][:-1]+ " " + Footer[Index][-1]
+                # scenario where the word is the longest word so far
                     else:
                         while len(Letter) < len(Footer[0]):
                             Letter = " " + Letter
                         Footer.append(Letter)
                 Index = Index + 1
             Footer = "\n".join(Footer)
-        # List_of_Category_names.append(Category.name)
-
     while len(Dashes) <= (len(Footer.split("\n")[0])+ 1):
          Dashes = Dashes + "-"
     Footer = Dashes + "\n" + Footer
-    # Graph_bar = ""
-    # The following crates Graph_bar COULD LIKE SO BETTER WITH LIST COMPREHENSION
-    # for x in range(1,10):
-    #     Graph_bar = " " + str(x*10) + "|" + "\n" + Graph_bar
-    # Graph_bar = "100|" + "\n" + Graph_bar
-    # Graph_bar = (Graph_bar.split("\n"))
-    # Graph_bar.pop
     Graph_bar = [" " + str(x*10) + "|" if not x == 10 else "100|" for x in range(1,11)]
-    # Graph_bar.append("100|")
     Graph_bar.reverse()
     Graph_bar.append("  0|")
     Isfirst = True
@@ -150,13 +138,10 @@ def create_spend_chart(Categories_list):
                 else:
                     Graph_bar[number] = Graph_bar[number] + "   "
         Isfirst = False
-    #   for item in Graph_bar:
-
     Graph_bar = "\n".join(Graph_bar)
     Final_result = "Percentage spent by category\n" + Graph_bar +"\n"+ Footer
-    print(Final_result.split("\n"))
+    # print(Final_result.split("\n"))
     return Final_result
-# create_spend_chart([a, b,c,d])
-Their_version = "Percentage spent by category\n100|          \n 90|          \n 80|          \n 70|    o     \n 60|    o     \n 50|    o     \n 40|    o     \n 30|    o     \n 20|    o  o  \n 10|    o  o  \n  0| o  o  o  \n    ----------\n     B  F  E  \n     u  o  n  \n     s  o  t  \n     i  d  e  \n     n     r  \n     e     t  \n     s     a  \n     s     i  \n           n  \n           m  \n           e  \n           n  \n           t  "
-create_spend_chart([a, b,c])
-print(Their_version.split("\n"))
+# print(create_spend_chart([a, b, c, d, e, f, g]))
+# Their_version = "Percentage spent by category\n100|          \n 90|          \n 80|          \n 70|    o     \n 60|    o     \n 50|    o     \n 40|    o     \n 30|    o     \n 20|    o  o  \n 10|    o  o  \n  0| o  o  o  \n    ----------\n     B  F  E  \n     u  o  n  \n     s  o  t  \n     i  d  e  \n     n     r  \n     e     t  \n     s     a  \n     s     i  \n           n  \n           m  \n           e  \n           n  \n           t  "
+# print(Their_version.split("\n"))
