@@ -9,7 +9,7 @@ class Category:
         Copy_ledger = self.ledger[:]
         self.items = ""
         self.nameCopy = self.name
-        print(self.ledger)
+        # print(self.ledger)
         while len(self.nameCopy) <= 28:
             self.nameCopy = "*" + self.nameCopy + "*"
         for x in range(len(Copy_ledger)):
@@ -25,8 +25,8 @@ class Category:
                 Dictionary["amount"] = int(Dictionary["amount"][:-3].strip())
             else:
                 Dictionary["amount"] = float(Dictionary["amount"].strip())
-        print(self.ledger)
-        return self.nameCopy + "\n" + self.items + "Total: " + self.get_balance()
+        # print(self.ledger)
+        return self.nameCopy + "\n" + self.items + "Total: " + "{:.2f}".format(self.balance)
     def deposit(self, amount, description= ""):
         try:
             int(amount)
@@ -48,12 +48,11 @@ class Category:
     def transfer(self, amount, destination):
         if self.check_funds(amount) == True:
             self.withdraw(amount, "Transfer to " + destination.name)
-            destination.deposit(amount, "transfer from " + self.name)
+            destination.deposit(amount, "Transfer from " + self.name)
             return True
         return False
     def get_balance(self):
-        balance_displayed_well = "{:.2f}".format(self.balance)
-        return balance_displayed_well
+        return self.balance
     def Percentage_spent(self):
         Alldeposited = 0
         Allwithdrawed = 0
@@ -63,7 +62,7 @@ class Category:
                 Alldeposited = Alldeposited + float(DicTransaction["amount"])
             elif float(DicTransaction["amount"]) <= 0:
                 Allwithdrawed = abs(Allwithdrawed + float(DicTransaction["amount"]))
-        Percentage = round((Allwithdrawed*100)/Alldeposited)
+        Percentage = round(((Allwithdrawed*100)/Alldeposited),-1)
         return Percentage
 
 a = Category("Business")
@@ -72,17 +71,21 @@ c = Category("Entertainment")
 d = Category("wwwwwww")
 e = Category("hhhhhhhhhhhhhhhhh")
 a.deposit(50,"Santa Claus arrived")
-a.withdraw(12.5, "fuck tyou")
-b.deposit(12.5,"Santa Claus arrived")
-b.withdraw(10, "fuck tyou")
-c.deposit(50,"Santa Claus arrived")
-c.withdraw(40, "fuck tyou")
-d.deposit(50,"Santa Claus arrived")
+# a.withdraw(12.5, "fuck tyou")
+b.deposit(100,"Santa Claus arrived")
+b.withdraw(70, "fuck tyou")
+c.deposit(100,"Santa Claus arrived")
+c.withdraw(20, "fuck tyou")
+d.deposit(30,"Santa Claus arrived")
 d.withdraw(10, "fuck tyou")
-a.transfer(1, c)
+# print(a.Percentage_spent())
+# print(b)
+# print(c.Percentage_spent())
+# print(d.Percentage_spent())
 def create_spend_chart(Categories_list):
     Footer = ""
     Dashes = "    "
+    # List_of_Category_names = list()
     for Category in Categories_list:
         Index = 0
         # THIS CREATES THE FOOTER OF OUR FINAL STRING
@@ -92,14 +95,32 @@ def create_spend_chart(Categories_list):
         else:
             Footer = Footer.rstrip().split("\n")
             for Letter in Category.name:
-                if Index <= (len(Footer)-1):
-                    Footer[Index] = Footer[Index] + "  " + Letter
-                elif Index > len(Footer)-1:
-                    while len(Letter) < len(Footer[0]):
-                        Letter = " " + Letter
-                    Footer.append(Letter)
+                # if Index <= (len(List_of_Category_names[-1])-1):
+                #     Footer[Index] = Footer[Index] + "  " + Letter
+                # elif Index > len(List_of_Category_names[-1])-1:
+                #     while len(Letter) < len(Footer[0]):
+                #         Letter = " " + Letter
+                #     Footer.append(Letter)
+                # Index = Index + 1
+            # Footer = "\n".join(Footer)
+                if Index == 0:
+                    # print(Letter.replace(" ","sd"))
+                    Footer[Index] = Footer[Index] + "  " + Letter.strip()
+                    # print(Letter.replace(" ","sd"))
+                elif Index > 0:
+                # it's the longest word, it's not the longest but it's longer than the previous one
+                    if Index <= len(Footer)-1:
+                        Footer[Index] = Footer[Index] + "  " + Letter
+                        while len(Footer[Index]) < len(Footer[0]):
+                            Footer[Index] = Footer[Index][:-1]+ " " + Footer[Index][-1]
+                    else:
+                        while len(Letter) < len(Footer[0]):
+                            Letter = " " + Letter
+                        Footer.append(Letter)
                 Index = Index + 1
             Footer = "\n".join(Footer)
+        # List_of_Category_names.append(Category.name)
+
     while len(Dashes) <= (len(Footer.split("\n")[0])+ 1):
          Dashes = Dashes + "-"
     Footer = Dashes + "\n" + Footer
@@ -114,7 +135,6 @@ def create_spend_chart(Categories_list):
     # Graph_bar.append("100|")
     Graph_bar.reverse()
     Graph_bar.append("  0|")
-    print(Graph_bar)
     Isfirst = True
     for Category in Categories_list:
         for number in range(len(Graph_bar)):
@@ -130,9 +150,13 @@ def create_spend_chart(Categories_list):
                 else:
                     Graph_bar[number] = Graph_bar[number] + "   "
         Isfirst = False
+    #   for item in Graph_bar:
+
     Graph_bar = "\n".join(Graph_bar)
     Final_result = "Percentage spent by category\n" + Graph_bar +"\n"+ Footer
+    print(Final_result.split("\n"))
     return Final_result
 # create_spend_chart([a, b,c,d])
-print(create_spend_chart([a, b,c,d]))
-print("Percentage spent by category\n100|          \n 90|          \n 80|          \n 70|    o     \n 60|    o     \n 50|    o     \n 40|    o     \n 30|    o     \n 20|    o  o  \n 10|    o  o  \n  0| o  o  o  \n    ----------\n     B  F  E  \n     u  o  n  \n     s  o  t  \n     i  d  e  \n     n     r  \n     e     t  \n     s     a  \n     s     i  \n           n  \n           m  \n           e  \n           n  \n           t  ")
+Their_version = "Percentage spent by category\n100|          \n 90|          \n 80|          \n 70|    o     \n 60|    o     \n 50|    o     \n 40|    o     \n 30|    o     \n 20|    o  o  \n 10|    o  o  \n  0| o  o  o  \n    ----------\n     B  F  E  \n     u  o  n  \n     s  o  t  \n     i  d  e  \n     n     r  \n     e     t  \n     s     a  \n     s     i  \n           n  \n           m  \n           e  \n           n  \n           t  "
+create_spend_chart([a, b,c])
+print(Their_version.split("\n"))
