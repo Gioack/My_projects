@@ -1,4 +1,5 @@
 ## python Budget_app.py
+import copy
 class Category:
     def __init__(self, name):
         self.name = name
@@ -6,7 +7,7 @@ class Category:
         self.ledger = list()
 
     def __repr__(self):
-        Copy_ledger = self.ledger[:]
+        Copy_ledger = copy.deepcopy(self.ledger)
         self.items = ""
         self.nameCopy = self.name
         # print(self.ledger)
@@ -19,13 +20,15 @@ class Category:
             while len(str(Copy_ledger[x]["amount"])) <= 6:
                 Copy_ledger[x]["amount"] = " " + str(Copy_ledger[x]["amount"])
             self.items = self.items + (Copy_ledger[x]["description"][:23] + Copy_ledger[x]["amount"][:7] + "\n")
-        for Dictionary in self.ledger:
-            Dictionary["description"] = Dictionary["description"].strip()
-            if Dictionary["amount"][-3:] == ".00":
-                Dictionary["amount"] = int(Dictionary["amount"][:-3].strip())
-            else:
-                Dictionary["amount"] = float(Dictionary["amount"].strip())
-        # print(self.ledger)
+
+# If you don't want to create a copy of leger, you can destroy it and add the following code.
+        # for Dictionary in self.ledger:
+        #     Dictionary["description"] = Dictionary["description"].strip()
+        #     if Dictionary["amount"][-3:] == ".00":
+        #         Dictionary["amount"] = int(Dictionary["amount"][:-3].strip())
+        #     else:
+        #         Dictionary["amount"] = float(Dictionary["amount"].strip())
+        print(self.ledger)
         return self.nameCopy + "\n" + self.items + "Total: " + "{:.2f}".format(self.balance)
     def deposit(self, amount, description= ""):
         try:
@@ -65,29 +68,29 @@ class Category:
         Percentage = round(((Allwithdrawed*100)/Alldeposited),-1)
         return Percentage
 # THINGS THAT CREATE CLASSES
-# a = Category("dsfdsfsdef")
-# b = Category("Food")
-# c = Category("Business")
-# d = Category("wwwwwww")
-# e = Category("hhhhhhhhhhhhhhhhh")
-# f = Category("sdsda")
-# g = Category("hhhhhhhhhhh   #@      hhhhhh")
-# a.deposit(50,"Santa Claus arrived")
-# a.withdraw(12.5, "Thiefs arrived")
-# b.deposit(100,"Santa Claus arrived")
-# b.withdraw(70, "Thiefs arrived")
-# c.deposit(100,"Santa Claus arrived")
-# c.withdraw(20, "Thiefs arrived")
-# d.deposit(30,"Santa Claus arrived")
-# d.withdraw(10, "Thiefs arrived")
-# e.deposit(30,"Santa Claus arrived")
-# e.withdraw(10, "Thiefs arrived")
-# f.deposit(30,"Santa Claus arrived")
-# f.withdraw(29, "Thiefs arrived")
-# g.deposit(30,"Santa Claus arrived")
-# g.withdraw(10, "Thiefs arrived")
-# print(a)
-# print(f)
+a = Category("dsfdsfsdef")
+b = Category("Food")
+c = Category("Business")
+d = Category("wwwwwww")
+e = Category("hhhhhhhhhhhhhhhhh")
+f = Category("sdsda")
+g = Category("hhhhhhhhhhh   #@      hhhhhh")
+a.deposit(50,"Santa Claus arrived")
+a.withdraw(12.5, "Thiefs arrived")
+b.deposit(100,"Santa Claus arrived")
+b.withdraw(70, "Thiefs arrived")
+c.deposit(100,"Santa Claus arrived")
+c.withdraw(20, "Thiefs arrived")
+d.deposit(30,"Santa Claus arrived")
+d.withdraw(10, "Thiefs arrived")
+e.deposit(30,"Santa Claus arrived")
+e.withdraw(10, "Thiefs arrived")
+f.deposit(30,"Santa Claus arrived")
+f.withdraw(29, "Thiefs arrived")
+g.deposit(30,"Santa Claus arrived")
+g.withdraw(10, "Thiefs arrived")
+print(a)
+print(f)
 def create_spend_chart(Categories_list):
     Footer = ""
     Dashes = "    "
@@ -140,6 +143,8 @@ def create_spend_chart(Categories_list):
         Isfirst = False
     Graph_bar = "\n".join(Graph_bar)
     Final_result = "Percentage spent by category\n" + Graph_bar +"\n"+ Footer
-    # print(Final_result.split("\n"))
     return Final_result
+    # print(Final_result.split("\n"))
 # print(create_spend_chart([a, b, c, d, e, f, g]))
+# Their_version = "Percentage spent by category\n100|          \n 90|          \n 80|          \n 70|    o     \n 60|    o     \n 50|    o     \n 40|    o     \n 30|    o     \n 20|    o  o  \n 10|    o  o  \n  0| o  o  o  \n    ----------\n     B  F  E  \n     u  o  n  \n     s  o  t  \n     i  d  e  \n     n     r  \n     e     t  \n     s     a  \n     s     i  \n           n  \n           m  \n           e  \n           n  \n           t  "
+# print(Their_version.split("\n"))
