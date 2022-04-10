@@ -1,9 +1,7 @@
 ## python Budget_app.py
-import copy
 class Category:
     def __init__(self, name):
         self.name = name
-        self.balance = 0.0
         self.ledger = list()
         self.Alldeposited = 0
         self.Allwithdrawn = 0
@@ -32,7 +30,8 @@ class Category:
         #         Dictionary["amount"] = int(Dictionary["amount"][:-3].strip())
         #     else:
         #         Dictionary["amount"] = float(Dictionary["amount"].strip())
-        return self.nameCopy + "\n" + self.items + "Total: " + "{:.2f}".format(self.balance)
+        balance = self.get_balance()
+        return self.nameCopy + "\n" + self.items + "Total: " + "{:.2f}".format(balance)
     def deposit(self, amount, description= ""):
         self.ledger.append({"amount": amount, "description": description})
         self.Alldeposited = self.Alldeposited+ amount
