@@ -45,19 +45,7 @@ class Rectangle:
                     if index == len(shape_to_fit_inside_picture)-1:
                         for Index, line in enumerate(shape_to_fit_inside_picture):
                             shape_main_picture[index_main+Index] = shape_main_picture[index_main+Index].replace(line.rstrip(),"", 1)
-                        print("\n".join(shape_main_picture),"\n-------")
                         counter = counter + 1
-
-        #
-        # while True:
-        #     # self.picture = self.picture.replace("")
-        #     Shape_Location = self.picture.find(self.shape)
-        #     if Shape_Location < 0:
-        #         break
-        #     self.picture = self.picture[:Shape_Location] + self.picture[Shape_Location+shape.width:]
-        #     print(self.picture, "\n------")
-        #     counter = counter + 1
-
         return counter
 class Square(Rectangle):
     def __init__(self, side):
@@ -73,8 +61,8 @@ class Square(Rectangle):
         self.height = new_height
     def __str__(self):
         return ("Square(side={})".format(self.width))
-a = Rectangle(5,8)
-b = Rectangle(3,2)
+a = Rectangle(10,15)
+b = Square(5)
 # print(a.get_picture())
 print(b.get_picture(),"\nthis is what has to enter------")
 print(a.get_amount_inside(b))

@@ -2,29 +2,19 @@
 import copy
 import random
 class Hat:
-
     def __init__(self, **balls):
         self.contents = list()
-        # print(balls)
         for x in balls:
             while balls[x] > 0:
                 self.contents.append(x)
                 balls[x] = balls[x] - 1
-        # print(self.contents)
     def draw(self, num_balls):
-        # random.seed(0)
         if num_balls > len(self.contents):
             return self.contents
         draw = random.sample(self.contents, num_balls)
         for ball in draw:
             self.contents.remove(ball)
         return draw
-# hat = Hat({"red":1, "green":1})
-hat2 = Hat(blue=6, green=11, white = 2, black = 1   )
-print(hat2.draw(4))
-# for x in hat:
-    # print(x)
-
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
     times_matched = 0
     for time in range(num_experiments):
@@ -40,8 +30,10 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
                     number_colors_matched = number_colors_matched + 1
         if number_colors_matched == len(expected_balls):
             times_matched = times_matched + 1
-    return times_matched/num_experiments
+    return f"{(times_matched/num_experiments)*100} %"
+#calls
+hat2 = Hat(blue=6, green=11, white = 2, black = 1)
 print(experiment(hat2,
-{"black":1},
-1,
-100000))
+{"black":1, "white" : 1},
+2,
+1000))
