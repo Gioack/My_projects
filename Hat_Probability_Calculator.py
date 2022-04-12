@@ -1,13 +1,14 @@
 # python Hat_Probability_Calculator.py
 import copy
 import random
+from collections import Counter
 class Hat:
     def __init__(self, **balls):
         self.contents = list()
-        for x in balls:
-            while balls[x] > 0:
-                self.contents.append(x)
-                balls[x] = balls[x] - 1
+        for color,number in balls.items():
+            while number > 0:
+                self.contents.append(color)
+                number = number - 1
     def draw(self, num_balls):
         if num_balls > len(self.contents):
             return self.contents
@@ -19,14 +20,12 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
     times_matched = 0
     for time in range(num_experiments):
         hat_copy = copy.deepcopy(hat)
-        draw_dict = dict()
         draw = hat_copy.draw(num_balls_drawn)
-        for ball in draw:
-            draw_dict[ball] = draw_dict.get(ball,0) + 1
+        draw_dict = Counter(draw)
         number_colors_matched = 0
-        for color in expected_balls:
-            if color in draw_dict:
-                if draw_dict[color] >= expected_balls[color]:
+        for (color_expected, number_expected), (color_drawn, number_drawn) in zip(expected_balls.items(), draw_dict.items()):
+            if color_expected in draw_dict:
+                if number_drawn >= number_expected:
                     number_colors_matched = number_colors_matched + 1
         if number_colors_matched == len(expected_balls):
             times_matched = times_matched + 1
@@ -34,6 +33,6 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
 #calls
 hat2 = Hat(blue=6, green=11, white = 2, black = 1)
 print(experiment(hat2,
-{"black":1, "white" : 1},
-2,
-1000))
+{"black":1},
+1,
+100000))
