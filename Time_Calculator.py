@@ -24,22 +24,22 @@ def add_time(start, duration, day_started = ""):
         if (start[0] > 12):
             start[0] = start[0] - 12
     if ResultMinutes < 10:
-        ResultMinutes = "0" + str(ResultMinutes)
-    Result =str(start[0]) + ":" + str(ResultMinutes)
+        ResultMinutes = f"0{ResultMinutes}"
+    Result = f"{start[0]}:{ResultMinutes}"
     if IsAM == True:
-        Result = Result + " AM"
+        Result = f"{Result} AM"
     else:
-        Result = Result + " PM"
+        Result = f"{Result} PM"
     if day_started != "":
         Number_start_day = Days_of_Week.index(day_started[0].upper() + day_started[1:].lower())
         Day_it_ends = Days_after + Number_start_day
         while Day_it_ends > 6:
             Day_it_ends = Day_it_ends - 7
-        Result = Result + ", " + Days_of_Week[Day_it_ends]
+        Result = f"{Result}, {Days_of_Week[Day_it_ends]}"
     if Days_after == 1:
-        Result = Result + " (next day)"
+        Result = f"{Result} (next day)"
     if Days_after >= 2:
-        Result = Result + " (" + str(Days_after) + " days later)"
+        Result = f"{Result} ({Days_after} days later)"
     return Result
 
-print(add_time("5:30 PM", "24:30", "Wednesday"))
+print(add_time("7:47 PM", "400:35"))
