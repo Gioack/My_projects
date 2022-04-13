@@ -9,20 +9,20 @@ class Category:
         self.items = ""
         self.nameCopy = self.name
         while len(self.nameCopy) <= 28:
-            self.nameCopy = "*" + self.nameCopy + "*"
+            self.nameCopy = f"*{self.nameCopy}*"
         for Index, Transaction in enumerate(self.ledger):
             final_row = ""
             for key,value in Transaction.items():
                 if key == "description":
                     while len(value) <= 22:
                         value = value + " "
-                    final_row = value[:23] + final_row
+                    final_row = f"{value[:23]}{final_row}"
                 elif key == "amount":
                     value = str("{:.2f}".format(value))
                     while len(str(value)) <= 6:
                         value = " " + str(value)
                     final_row = value[:7]
-            self.items = self.items + final_row + "\n"
+            self.items = f"{self.items}{final_row}\n"
 # If you don't want to create a copy of leger, you can destroy it and add the following code.
         # for Dictionary in self.ledger:
         #     Dictionary["description"] = Dictionary["description"].strip()
@@ -30,8 +30,8 @@ class Category:
         #         Dictionary["amount"] = int(Dictionary["amount"][:-3].strip())
         #     else:
         #         Dictionary["amount"] = float(Dictionary["amount"].strip())
-        balance = self.get_balance()
-        return self.nameCopy + "\n" + self.items + "Total: " + "{:.2f}".format(balance)
+        balance = "{:.2f}".format(self.get_balance())
+        return f"{self.nameCopy}\n{self.items}Total: {balance}"
     def deposit(self, amount, description= ""):
         self.ledger.append({"amount": amount, "description": description})
         self.Alldeposited = self.Alldeposited+ amount
@@ -48,8 +48,8 @@ class Category:
             return False
     def transfer(self, amount, destination):
         if self.check_funds(amount) == True:
-            self.withdraw(amount, "Transfer to " + destination.name)
-            destination.deposit(amount, "Transfer from " + self.name)
+            self.withdraw(amount, f"Transfer to {destination.name}")
+            destination.deposit(amount, f"Transfer from {self.name}")
             return True
         return False
     def get_balance(self):
@@ -65,13 +65,13 @@ def create_spend_chart(Categories_list):
         # THIS CREATES THE FOOTER OF OUR FINAL STRING
         if Footer == "":
             for Letter in Category.name:
-                Footer = Footer + "     " + Letter + "\n"
+                Footer = f"{Footer}     {Letter}\n"
         else:
             Footer = Footer.rstrip().split("\n")
               #rstrip is here for eliminating the empty element that would be created
             for Index,Letter in enumerate(Category.name):
                 if Index == 0:
-                    Footer[Index] = Footer[Index] + "  " + Letter.strip()
+                    Footer[Index] = f"{Footer[Index]}  {Letter.strip()}"
                 elif Index > 0:
                 # the following covers 2 Scenarios:
                 # scenario where the word is not the longest
