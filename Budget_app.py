@@ -90,27 +90,25 @@ def create_spend_chart(Categories_list):
          Dashes = Dashes + "-"
     Footer = Dashes + "\n" + Footer
 # this creates the Upper part of graphs
-    Graph_bar = [" " + str(x*10) + "|" if not x == 10 else "100|" for x in range(1,11)]
-    Graph_bar.reverse()
-    Graph_bar.append("  0|")
+    Graph_bar = [(f'{" "*(3-len(str(x*10)))}{x*10}|') for x in reversed((range(11)))]
     Isfirst = True
     for Category in Categories_list:
         for number,value in enumerate(Graph_bar):
             number_well_set = int(Graph_bar[number][:3].strip())
             if number_well_set <= Category.Percentage_spent(): #### CREATE DIFFERENCE
                 if Isfirst == True:
-                    Graph_bar[number] = Graph_bar[number] + " o"
+                    Graph_bar[number] += " o"
                 else:
-                    Graph_bar[number] = Graph_bar[number] + "  o"
+                    Graph_bar[number] += "  o"
             else:
                 if Isfirst == True:
-                    Graph_bar[number] = Graph_bar[number] + "  "
+                    Graph_bar[number] += "  "
                 else:
-                    Graph_bar[number] = Graph_bar[number] + "   "
+                    Graph_bar[number] += "   "
         Isfirst = False
     Graph_bar = "\n".join(Graph_bar)
 
-    Final_result = "Percentage spent by category\n" + Graph_bar +"\n"+ Footer
+    Final_result = f"Percentage spent by category\n{Graph_bar}\n{Footer}"
     return Final_result
 # THINGS THAT CREATE CLASSES
 a = Category("dsfdsfsdef")
