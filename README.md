@@ -2,8 +2,6 @@
 I post here each cool small project that I do:
 ## Arithmetic_Formatter
 It formats operations as students in primary school do.
-## Time_calculator
-It is able to add hours and minutes to a specific time. It also shows the number of days that passes from the starting time to the final time.
 ## Budget_app
 You can create a lot of categories, that are similar to a wallet. You can deposit into them, withdraw from them and transfer from one of them to another one.
 There is even a function that creates a chart that shows as a percentage how much money has been withdrawn from selected categories.
@@ -13,8 +11,7 @@ There is even a function that creates a chart that shows as a percentage how muc
 It creates an hat.
 The user chooses how many types and how many balls for each type are in the hat.
 Example:(red=8, blue=9, striped=8)
-As a second argument the user chooses a number of balls inside the hat in this way:
-- red:3, blue:2
+As a second argument the user chooses a number of balls inside the hat.
 The user passes as a third argument a number that says how many draw from the hat will be performed to get the balls he/she just determined.
 The app does a large number of experiments and make the probability based on them.
 The default number of experiments is 75000, it is really precise.
@@ -57,3 +54,5 @@ Input:                        Output:
 print(Square.get_picture())   ********
                               ********
 ```
+## Time_calculator
+It is able to add hours and minutes to a specific time. It also shows the number of days that passes from the starting time to the final time.
