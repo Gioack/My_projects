@@ -2,23 +2,39 @@
 I post here each cool small project that I do:
 ## Arithmetic_Formatter
 It formats operations as students in primary school do.
+The user just has to write the operations he wants to format, if he/se wants to see the results too, the users needs to write True after the operations.  
+#### Usage example:
+```
+Input: print(arithmetic_arranger(["780 + 56", "3849 - 1784", "305 + 489"]))
+
+Output:
+  780      3849      305
++  56    - 1784    + 489
+-----    ------    -----
+
+Input: print(arithmetic_arranger(["50 + 8", "2397 - 1784", "9385 + 3781", "523 - 347"],True))   
+
+Output:
+  50      2397      9385      523
++  8    - 1784    + 3781    - 347
+----    ------    ------    -----
+  58       613     13166      176
+```
 ## Budget_app
 You can create a lot of categories, that are similar to a wallet. You can deposit into them, withdraw from them and transfer from one of them to another one.
 There is even a function that creates a chart that shows as a percentage how much money has been withdrawn from selected categories.
-#### Usage example:
-
 ## Hat_Probability_Calculator
 It creates an hat.
 The user chooses how many types and how many balls for each type are in the hat.
 
 As a second argument the user chooses a number of balls inside the hat.
 
-The user passes as a third argument a number that says how many draw from the hat will be performed to get the balls he/she just determined.
+The user passes as a third argument a number to decide how many draw from the hat will be performed to get the balls he/she just determined.
 
 The app does a large number of experiments and make the probability based on them.
 The default number of experiments is 75000, it is really precise.
 
-Anyway if the user want a more or less precise probability he/she can specify the number of experiments. Otherwise he/she can just run the code.
+Anyway if the user want a more or less precise probability he/she can specify the number of experiments, otherwise the user can run the code without specifying it.
 
 It will display the probability.
 #### Usage example:
