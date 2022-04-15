@@ -49,7 +49,8 @@ Square = Square(2)
 | print(Square.get_perimeter())  | 8  |
 | print(Square.get_diagonal())  | 2.8284271247461903  |
 | print(Rectangle.get_amount_inside_no_rotations(Square))  | 4  |
-
+```
 Input:                        Output:
 print(Square.get_picture())   ********
                               ********
+```
