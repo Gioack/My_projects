@@ -10,12 +10,16 @@ There is even a function that creates a chart that shows as a percentage how muc
 ## Hat_Probability_Calculator
 It creates an hat.
 The user chooses how many types and how many balls for each type are in the hat.
-Example:(red=8, blue=9, striped=8)
+
 As a second argument the user chooses a number of balls inside the hat.
+
 The user passes as a third argument a number that says how many draw from the hat will be performed to get the balls he/she just determined.
+
 The app does a large number of experiments and make the probability based on them.
 The default number of experiments is 75000, it is really precise.
+
 Anyway if the user want a more or less precise probability he/she can specify the number of experiments. Otherwise he/she can just run the code.
+
 It will display the probability.
 #### Usage example:
 ```
