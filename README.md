@@ -40,8 +40,11 @@ It is able to create Rectangles and squares, you can do some cool operations wit
 You can even change the width and the height of a shape trough set_width(), set_height() methods. If the you initialized a Square you can just call one of them to change both dimension.
 #### Usage example:
 *Create 2 shapes*:
+
 Rectangle = Rectangle(8,2)
+
 Square = Square(2)
+
 *Use methods*:
 | Input   | Output |
 | ------------- | ------------- |
