@@ -40,13 +40,16 @@ It is able to create Rectangles and squares, you can do some cool operations wit
 You can even change the width and the height of a shape trough set_width(), set_height() methods. If the you initialized a Square you can just call one of them to change both dimension.
 #### Usage example:
 *Create 2 shapes*:
-Rectangle = Rectangle(4,8)
+Rectangle = Rectangle(8,2)
 Square = Square(2)
 *Use methods*:
 | Input   | Output |
 | ------------- | ------------- |
-| print(Rectangle.get_area())  | Content Cell  |
-| print(Square.get_perimeter())  | Content Cell  |
-| print(Square.get_diagonal())  | Content Cell  |
-| print(Rectangle.get_picture())  | Content Cell  |
-| print(Rectangle.get_amount_inside_no_rotations(Square))  | Content Cell  |
+| print(Rectangle.get_area())  | 16  |
+| print(Square.get_perimeter())  | 8  |
+| print(Square.get_diagonal())  | 2.8284271247461903  |
+| print(Rectangle.get_amount_inside_no_rotations(Square))  | 4  |
+
+Input:                        Output:
+print(Square.get_picture())   ********
+                              ********
