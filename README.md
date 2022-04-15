@@ -5,16 +5,22 @@ It formats operations as students in primary school do.
 The user just has to write the operations he wants to format, if he/se wants to see the results too, the users needs to write True after the operations.  
 #### Usage example:
 ```
-Input: print(arithmetic_arranger(["780 + 56", "3849 - 1784", "305 + 489"]))
+Input:
+
+print(arithmetic_arranger(["780 + 56", "3849 - 1784", "305 + 489"]))
 
 Output:
+
   780      3849      305
 +  56    - 1784    + 489
 -----    ------    -----
 
-Input: print(arithmetic_arranger(["50 + 8", "2397 - 1784", "9385 + 3781", "523 - 347"],True))   
+Input:
+
+print(arithmetic_arranger(["50 + 8", "2397 - 1784", "9385 + 3781", "523 - 347"],True))   
 
 Output:
+
   50      2397      9385      523
 +  8    - 1784    + 3781    - 347
 ----    ------    ------    -----
