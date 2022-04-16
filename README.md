@@ -39,7 +39,7 @@ Leonardo_da_Vinci.deposit(50,"Sold Monna Lisa")
 After that we can start depositing, withdrawing, transferring.    
 
 ```
-Leonardo_da_Vinci.withdraw(10, "I need to pay Fines because I was too lazy and I didn't respect my expiry dates")
+Leonardo_da_Vinci.withdraw(10, "I need to pay fines because I was too lazy and I didn't respect my expiry dates")
 Michelangelo.deposit(100,"Sold David")
 Michelangelo.withdraw(70, "Bought a shower")
 Pablo_Picasso.deposit(100,"Sold Les Demoiselles d'Avignon")
@@ -100,7 +100,6 @@ Percentage spent by category
      n        g
      c        h
      i
-
 ```
 ## [Hat_Probability_Calculator](https://github.com/Gioack/My_projects/blob/main/Hat_Probability_Calculator.py)
 It creates an hat.
@@ -113,9 +112,9 @@ The user passes as a third argument a number to decide how many draw from the ha
 The app does a large number of experiments and make the probability based on them.
 The default number of experiments is 75000, it is really precise.
 
-Anyway if the user want a more or less precise probability he/she can specify the number of experiments, otherwise the user can run the code without specifying it.
+Anyway if the user wants a more or less precise probability, he/she can specify the number of experiments, otherwise the user can run the code without specifying it.
 
-It will display the probability.
+It will display the probability of drawing those balls.
 #### Usage
 Input:
 
@@ -135,9 +134,9 @@ It is able to create Rectangles and squares, you can do some cool operations wit
 - Calculating Area
 - Calculating Perimeter
 - Calculating Diagonal
-- Get a picture made of *
-- Get how many times another shape(you must create 2 shapes to do so) could fit inside the first shape(with no rotations)
-You can even change the width and the height of a shape trough set_width(), set_height() methods. If the you initialized a Square you can just call one of them to change both dimension.
+- Getting a picture made of *
+- Getting how many times another shape(you must create 2 shapes to do so) could fit inside the first shape(with no rotations)
+You can even change the width and the height of a shape trough set_width(), set_height() methods. If the shape is a Square(initialized properly), it's not necessary to call both functions, each function will change both dimensions in that case.
 #### Usage
 *Create 2 shapes*:
 
@@ -166,9 +165,8 @@ Output:
 ********
 ```
 ## [Time_calculator](https://github.com/Gioack/My_projects/blob/main/Time_Calculator.py)
-It is able to add hours and minutes to a specific time. It also shows the number of days that passes from the starting time to the final time. If you specify the name of the starting name it will return the name of the ending day too.
-This project also has a GUI.
+It is able to add hours and minutes to a specific time. It also shows the number of days that passes from the starting time to the final time. If you specify the name of the starting name, it will return the name of the ending day too.
 #### Usage
-This is for sure the easiest one to use, GUI makes everything simpler. You just have to run the code and write time as it is shown below. If you don't specify whether the time is AM or PM, it will consider AM.
+This is for sure the easiest one to use, Graphic User Interface makes everything simpler. You just have to run the code and write time as it is shown below. If you don't specify whether the time is AM or PM, it will consider AM.    
 
 ![image](https://user-images.githubusercontent.com/101208747/163681213-4ca5b014-fede-40b9-9c94-7f1808a68f88.png)
