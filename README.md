@@ -34,6 +34,11 @@ Michelangelo = Category("Micky")
 Pablo_Picasso = Category("Pablo")
 Vincent_van_Gogh = Category("van Gogh")
 Leonardo_da_Vinci.deposit(50,"Sold Monna Lisa")
+```
+
+After that we can start depositing, withdrawing, transferring.    
+
+```
 Leonardo_da_Vinci.withdraw(10, "I need to pay Fines because I was too lazy and I didn't respect my expiry dates")
 Michelangelo.deposit(100,"Sold David")
 Michelangelo.withdraw(70, "Bought a shower")
@@ -42,6 +47,7 @@ Pablo_Picasso.transfer(90, Vincent_van_Gogh)
 Vincent_van_Gogh.deposit(0.01,"I sold a painting!")
 Vincent_van_Gogh.withdraw(0.01, "It was a joke I didn't")
 ```
+
 After that we can call functions
 
 Inputs:
