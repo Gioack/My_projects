@@ -85,7 +85,6 @@ print(Square.get_picture())   ********
 It is able to add hours and minutes to a specific time. It also shows the number of days that passes from the starting time to the final time. If you specify the name of the starting name it will return the name of the ending day too.
 This project also has a GUI.
 #### Usage
-This is for sure the easiest one to use, GUI makes everything simpler. You just have to run the code and write time in this form:
-hours:minutes
-Example:
-![image](https://user-images.githubusercontent.com/101208747/163680572-7578f228-9279-4a37-941f-a7a6d1106cb6.png)
+This is for sure the easiest one to use, GUI makes everything simpler. You just have to run the code and write time as it is shown below. If you don't specify whether the time is AM or PM, it will consider AM.
+
+![image](https://user-images.githubusercontent.com/101208747/163681213-4ca5b014-fede-40b9-9c94-7f1808a68f88.png)
