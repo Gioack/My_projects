@@ -15,12 +15,12 @@ class Category:
             for key,value in Transaction.items():
                 if key == "description":
                     while len(value) <= 22:
-                        value = value + " "
+                        value += " "
                     final_row = f"{value[:23]}{final_row}"
                 elif key == "amount":
                     value = str("{:.2f}".format(value))
                     while len(str(value)) <= 6:
-                        value = " " + str(value)
+                        value = f" {value}"
                     final_row = value[:7]
             self.items = f"{self.items}{final_row}\n"
 # If you don't want to create a copy of leger, you can destroy it and add the following code.
@@ -34,7 +34,7 @@ class Category:
         return f"{self.nameCopy}\n{self.items}Total: {balance}"
     def deposit(self, amount, description= ""):
         self.ledger.append({"amount": amount, "description": description})
-        self.Alldeposited = self.Alldeposited+ amount
+        self.Alldeposited += amount
     def check_funds(self, amount):
         if float(amount) > self.Alldeposited:
             return False
@@ -42,7 +42,7 @@ class Category:
     def withdraw(self, amount, description= ""):
         if self.check_funds(amount) == True:
             self.ledger.append({"amount": -amount, "description": description})
-            self.Allwithdrawn = self.Allwithdrawn + amount
+            self.Allwithdrawn += amount
             return True
         else:
             return False
@@ -76,7 +76,7 @@ def create_spend_chart(Categories_list):
                 # the following covers 2 Scenarios:
                 # scenario where the word is not the longest
                     if Index <= len(Footer)-1:
-                        Footer[Index] = Footer[Index] + "  " + Letter
+                        Footer[Index] +=  f"  {Letter}"
                         # the following covers the case when it's longer than the previous one but not the longest one
                         while len(Footer[Index]) < len(Footer[0]):
                             Footer[Index] = Footer[Index][:-1]+ " " + Footer[Index][-1]
@@ -87,8 +87,8 @@ def create_spend_chart(Categories_list):
                         Footer.append(Letter)
             Footer = "\n".join(Footer)
     while len(Dashes) <= (len(Footer.split("\n")[0])+ 1):
-         Dashes = Dashes + "-"
-    Footer = Dashes + "\n" + Footer
+         Dashes += "-"
+    Footer = f"{Dashes}\n{Footer}"
 # this creates the Upper part of graphs
     Graph_bar = [(f'{" "*(3-len(str(x*10)))}{x*10}|') for x in reversed((range(11)))]
     Isfirst = True

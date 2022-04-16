@@ -21,13 +21,13 @@ def add_time(start, duration, day_started = ""):
     Hours_to_add_from_Minutes = (start[1] + duration[1] - ResultMinutes) / 60
     Hours_to_add = duration[0] + Hours_to_add_from_Minutes
     while Hours_to_add > 0:
-        start[0] = start[0] + 1
+        start[0] += 1
         Hours_to_add = Hours_to_add - 1
         if (start[0] == 12) and (IsAM == True):
             IsAM = False
         elif (start[0] == 12) and (IsAM == False):
             IsAM = True
-            Days_after = Days_after + 1
+            Days_after += 1
         if (start[0] > 12):
             start[0] = start[0] - 12
     if ResultMinutes < 10:

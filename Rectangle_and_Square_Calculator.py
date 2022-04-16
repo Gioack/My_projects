@@ -20,9 +20,9 @@ class Rectangle:
     def get_picture(self):
         if (self.width or self.height) > 50:
             return "Too big for picture."
-        picture = "*"*self.width + "\n"
+        picture = f"{'*'*self.width}\n"
         for time in range(self.height-1):
-            picture = picture + "*"*self.width + "\n"
+            picture +=f'{"*"*self.width}\n'
         return picture
     def get_amount_inside_no_rotations(self, shape_to_fit_inside_):
         # shape main = shape that fits inside itself the other shape
@@ -43,7 +43,7 @@ class Rectangle:
                     if index == len(shape_to_fit_inside_picture)-1:
                         for Index, line in enumerate(shape_to_fit_inside_picture):
                             shape_main_picture[index_main+Index] = shape_main_picture[index_main+Index].replace(line.rstrip(),"", 1)
-                        counter = counter + 1
+                        counter += 1
         return counter
 class Square(Rectangle):
     def __init__(self, side):
