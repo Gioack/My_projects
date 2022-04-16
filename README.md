@@ -25,7 +25,7 @@ Outputs:
 ```
 ## [Budget_app](https://github.com/Gioack/My_projects/blob/main/Budget_app.py)
 You can create a lot of categories, that are similar to a wallet. You can deposit into them, withdraw from them and transfer from one of them to another one.
-There is even a function that creates a chart that shows as a percentage rounded to the nearest tens how much money has been withdrawn from selected categories.
+There is even a function that creates a chart that shows as a percentage (rounded to the nearest tens) how much money has been withdrawn from selected categories.
 #### Usage
 First wallets must be created in this way:
 ```
