@@ -71,4 +71,4 @@ def Control_length_numbers(problems):
             number = number.strip()
             if len(number) > 4:
                 return True
-print(arithmetic_arranger(["  3 + 6", "33 - 2", "4 + 433", "1 + 4933", "33 + 6"], True))
+print(arithmetic_arranger(["780 + 56", "3849 - 1784", "305 + 489"]))

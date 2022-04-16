@@ -16,7 +16,7 @@ class Hat:
         for ball in draw:
             self.contents.remove(ball)
         return draw
-def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
+def experiment(hat, expected_balls, num_balls_drawn, num_experiments=75000):
     times_matched = 0
     for time in range(num_experiments):
         hat_copy = copy.deepcopy(hat)
@@ -29,10 +29,8 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
                     number_colors_matched += 1
         if number_colors_matched == len(expected_balls):
             times_matched += 1
-    return f"{(times_matched/num_experiments)*100} %"
+    return f"{round((times_matched/num_experiments)*100, 2)} %"
 #calls
-hat2 = Hat(blue=6, green=11, white = 2, black = 1)
-print(experiment(hat2,
-{"black":1},
-1,
-1000))
+print(experiment(hat = Hat(blue=6, green=11, white = 2, black = 1),
+expected_balls = {"black":1,"green":3},
+num_balls_drawn = 5))

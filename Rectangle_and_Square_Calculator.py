@@ -1,5 +1,4 @@
 class Rectangle:
-
     def __init__(self, width, height):
         self.set_width(width)
         self.set_height(height)
@@ -16,7 +15,7 @@ class Rectangle:
         perimeter = (self.width * 2) + (self.height * 2)
         return perimeter
     def get_diagonal(self):
-        diagonal = (self.width**2 + self.height**2)**(1/2)
+        diagonal = (self.width**2 + self.height**2)**0.5
         return diagonal
     def get_picture(self):
         if (self.width or self.height) > 50:
@@ -25,7 +24,7 @@ class Rectangle:
         for time in range(self.height-1):
             picture = picture + "*"*self.width + "\n"
         return picture
-    def get_amount_inside(self, shape_to_fit_inside_):
+    def get_amount_inside_no_rotations(self, shape_to_fit_inside_):
         # shape main = shape that fits inside itself the other shape
         shape_main_picture = self.get_picture().split("\n")#***\n***\n***
         shape_to_fit_inside_picture = shape_to_fit_inside_.get_picture().split("\n") #**\n**
@@ -37,7 +36,6 @@ class Rectangle:
             if (len(shape_main_picture) - index_main) < shape_to_fit_inside_.height:
                 return counter
             # Shape_Location = line_main.find(shape_to_fit_inside_picture[0])
-            # THE PROBLEM IS THAT YOU HAVE TO STUCK AT THE FIRST LINE UNTIL YOU CAN, FIX IT TROUGH WHILE LOOP
             while shape_to_fit_inside_picture[0] in shape_main_picture[index_main]:
                 for index, line in enumerate(shape_to_fit_inside_picture):
                     if not line in shape_main_picture[index_main+index]:
@@ -56,13 +54,16 @@ class Square(Rectangle):
     def set_width(self, new_width):
         self.width = new_width
         self.height = new_width
-    def set_height(self, new_height):
+    def set_width(self, new_height):
         self.width = new_height
         self.height = new_height
     def __str__(self):
         return ("Square(side={})".format(self.width))
-a = Rectangle(10,15)
-b = Square(5)
+Rectangle = Rectangle(8,2)
+Square = Square(2)
 # print(a.get_picture())
-print(b.get_picture(),"\nthis is what has to enter------")
-print(a.get_amount_inside(b))
+print(Rectangle.get_area())
+print(Square.get_perimeter())
+print(Square.get_diagonal())
+print(Rectangle.get_picture())
+print(Rectangle.get_amount_inside_no_rotations(Square))
