@@ -61,12 +61,12 @@ print(create_spend_chart([Leo, Micky, Pablo, Vincy]))
 Outputs:
 
 ```
-*********Michelangelo*********
+************Micky************
 Sold David              100.00
 Bought a shower         -70.00
 Total: 30.00
-*******Vincent van Gogh*******
-Transfer from Pablo Pic  90.00
+***********van Gogh***********
+Transfer from Pablo      90.00
 I sold a painting!        0.01
 It was a joke I didn't   -0.01
 Total: 90.00
@@ -83,23 +83,15 @@ Percentage spent by category
  10| o  o  o   
   0| o  o  o  o
     -------------
-     L  M  P  V
-     e  i  a  i
+     L  M  P  v
+     e  i  a  a
      o  c  b  n
-     n  h  l  c
-     a  e  o  e
-     r  l     n
-     d  a  P  t
-     o  n  i   
-        g  c  v
-     d  e  a  a
-     a  l  s  n
-        o  s   
-     V     o  G
-     i        o
-     n        g
-     c        h
-     i
+        k  l   
+        y  o  G
+              o
+              g
+              h
+
 ```
 ## [Hat_Probability_Calculator](https://github.com/Gioack/My_projects/blob/main/Hat_Probability_Calculator.py)
 It creates an hat.
