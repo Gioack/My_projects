@@ -28,7 +28,71 @@ Output:
 ```
 ## [Budget_app](https://github.com/Gioack/My_projects/blob/main/Budget_app.py)
 You can create a lot of categories, that are similar to a wallet. You can deposit into them, withdraw from them and transfer from one of them to another one.
-There is even a function that creates a chart that shows as a percentage how much money has been withdrawn from selected categories.
+There is even a function that creates a chart that shows as a percentage rounded to the nearest tens how much money has been withdrawn from selected categories.
+#### Usage
+First wallets must be created in this way:
+```
+Leo = Category("Leonardo da Vinci")
+Micky = Category("Michelangelo")
+Pablo = Category("Pablo Picasso")
+Vincy = Category("Vincent van Gogh")
+Leo.deposit(50,"Sold Monna Lisa")
+Leo.withdraw(12.5, "I need to pay Fines because I was too lazy and I didn't respect my expiry dates")
+Micky.deposit(100,"Sold David")
+Micky.withdraw(70, "Bought a shower")
+Pablo.deposit(100,"Sold Les Demoiselles d'Avignon")
+Pablo.transfer(20, Vincy)
+Vincy.deposit(0.01,"I sold a painting!")
+Vincy.withdraw(0.01, "It was a joke I didn't")
+```
+After that we can call functions
+```
+Inputs:
+print(Micky)
+print(Vincy)
+print(create_spend_chart([Leo, Micky, Pablo, Vincy]))
+Outputs:
+*********Michelangelo*********
+Sold David              100.00
+Bought a shower         -70.00
+Total: 30.00
+*******Vincent van Gogh*******
+Transfer from Pablo Pic  90.00
+I sold a painting!        0.01
+It was a joke I didn't   -0.01
+Total: 90.00
+Percentage spent by category
+100|           
+ 90|       o   
+ 80|       o   
+ 70|    o  o   
+ 60|    o  o   
+ 50|    o  o   
+ 40|    o  o   
+ 30|    o  o   
+ 20| o  o  o   
+ 10| o  o  o   
+  0| o  o  o  o
+    -------------
+     L  M  P  V
+     e  i  a  i
+     o  c  b  n
+     n  h  l  c
+     a  e  o  e
+     r  l     n
+     d  a  P  t
+     o  n  i   
+        g  c  v
+     d  e  a  a
+     a  l  s  n
+        o  s   
+     V     o  G
+     i        o
+     n        g
+     c        h
+     i
+
+```
 ## [Hat_Probability_Calculator](https://github.com/Gioack/My_projects/blob/main/Hat_Probability_Calculator.py)
 It creates an hat.
 The user chooses how many types and how many balls for each type are in the hat.
