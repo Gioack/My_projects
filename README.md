@@ -4,22 +4,19 @@ I post here each cool small project that I do:
 It formats operations as students in primary school do.
 The user just has to write the operations he wants to format, if he/se wants to see the results too, the users needs to write True after the operations.  
 #### Usage
+Inputs:
+
 ```
-Input:
-
 print(arithmetic_arranger(["780 + 56", "3849 - 1784", "305 + 489"]))
+print(arithmetic_arranger(["50 + 8", "2397 - 1784", "9385 + 3781", "523 - 347"],True))
+```
 
-Output:
+Outputs:
 
+```
   780      3849      305
 +  56    - 1784    + 489
 -----    ------    -----
-
-Input:
-
-print(arithmetic_arranger(["50 + 8", "2397 - 1784", "9385 + 3781", "523 - 347"],True))   
-
-Output:
 
   50      2397      9385      523
 +  8    - 1784    + 3781    - 347
@@ -32,26 +29,32 @@ There is even a function that creates a chart that shows as a percentage rounded
 #### Usage
 First wallets must be created in this way:
 ```
-Leo = Category("Leonardo da Vinci")
-Micky = Category("Michelangelo")
-Pablo = Category("Pablo Picasso")
-Vincy = Category("Vincent van Gogh")
-Leo.deposit(50,"Sold Monna Lisa")
-Leo.withdraw(12.5, "I need to pay Fines because I was too lazy and I didn't respect my expiry dates")
-Micky.deposit(100,"Sold David")
-Micky.withdraw(70, "Bought a shower")
-Pablo.deposit(100,"Sold Les Demoiselles d'Avignon")
-Pablo.transfer(20, Vincy)
-Vincy.deposit(0.01,"I sold a painting!")
-Vincy.withdraw(0.01, "It was a joke I didn't")
+Leonardo_da_Vinci = Category("Leo")
+Michelangelo = Category("Micky")
+Pablo_Picasso = Category("Pablo")
+Vincent_van_Gogh = Category("van Gogh")
+Leonardo_da_Vinci.deposit(50,"Sold Monna Lisa")
+Leonardo_da_Vinci.withdraw(10, "I need to pay Fines because I was too lazy and I didn't respect my expiry dates")
+Michelangelo.deposit(100,"Sold David")
+Michelangelo.withdraw(70, "Bought a shower")
+Pablo_Picasso.deposit(100,"Sold Les Demoiselles d'Avignon")
+Pablo_Picasso.transfer(90, Vincent_van_Gogh)
+Vincent_van_Gogh.deposit(0.01,"I sold a painting!")
+Vincent_van_Gogh.withdraw(0.01, "It was a joke I didn't")
 ```
 After that we can call functions
-```
+
 Inputs:
+
+```
 print(Micky)
 print(Vincy)
 print(create_spend_chart([Leo, Micky, Pablo, Vincy]))
+```
+
 Outputs:
+
+```
 *********Michelangelo*********
 Sold David              100.00
 Bought a shower         -70.00
@@ -108,13 +111,17 @@ Anyway if the user want a more or less precise probability he/she can specify th
 
 It will display the probability.
 #### Usage
-```
 Input:
+
+```
 print(experiment(hat = Hat(blue=6, green=11, white = 2, black = 1),
 expected_balls = {"black":1,"green":3},
 num_balls_drawn = 5))
+```
 
 Output:
+
+```
 Something close to 3.4 %
 ```   
 ## [Rectangle_and_Square_Calculator](https://github.com/Gioack/My_projects/blob/main/Rectangle_and_Square_Calculator.py)
@@ -140,10 +147,17 @@ Square = Square(2)
 | print(Square.get_diagonal())  | 2.8284271247461903  |
 | print(Rectangle.get_amount_inside_no_rotations(Square))  | 4  |
 
+Input:  
+
 ```
-Input:                        Output:
-print(Square.get_picture())   ********
-                              ********
+print(Square.get_picture())                                 
+```
+
+Output:
+
+```
+********
+********
 ```
 ## [Time_calculator](https://github.com/Gioack/My_projects/blob/main/Time_Calculator.py)
 It is able to add hours and minutes to a specific time. It also shows the number of days that passes from the starting time to the final time. If you specify the name of the starting name it will return the name of the ending day too.
