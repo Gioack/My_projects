@@ -83,5 +83,9 @@ print(Square.get_picture())   ********
 ```
 ## [Time_calculator](https://github.com/Gioack/My_projects/blob/main/Time_Calculator.py)
 It is able to add hours and minutes to a specific time. It also shows the number of days that passes from the starting time to the final time. If you specify the name of the starting name it will return the name of the ending day too.
-This project has a really cool GUI too.
+This project also has a GUI.
 #### Usage
+This is for sure the easiest one to use, GUI makes everything simpler. You just have to run the code and write time in this form:
+hours:minutes
+Example:
+![image](https://user-images.githubusercontent.com/101208747/163680572-7578f228-9279-4a37-941f-a7a6d1106cb6.png)
