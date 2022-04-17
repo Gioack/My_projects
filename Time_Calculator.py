@@ -1,4 +1,3 @@
-# python Time_Calculator.py
 from tkinter import *
 root = Tk()
 root.title("Time_Calculator")
@@ -34,25 +33,26 @@ def add_time(start, duration, day_started = ""):
         ResultMinutes = f"0{ResultMinutes}"
     Result = f"{start[0]}:{ResultMinutes}"
     if IsAM == True:
-        Result = f"{Result} AM"
+        Result += " AM"
     else:
-        Result = f"{Result} PM"
+        Result += " PM"
     if day_started != "":
         Number_start_day = Days_of_Week.index(day_started[0].upper() + day_started[1:].lower())
         Day_it_ends = Days_after + Number_start_day
         while Day_it_ends > 6:
             Day_it_ends = Day_it_ends - 7
-        Result = f"{Result}, {Days_of_Week[Day_it_ends]}"
+        Result += f", {Days_of_Week[Day_it_ends]}"
     if Days_after == 1:
-        Result = f"{Result} (next day)"
+        Result += " (next day)"
     if Days_after >= 2:
-        Result = f"{Result} ({Days_after} days later)"
+        Result += f" ({Days_after} days later)"
     global Result_Gui
     Result_Gui.destroy()
     Result_Gui = Label(root,text=Result, bg="#36454F",
                 fg="White",font=("Bold",30),pady=80)
     Result_Gui.grid(row=7, column=2)
     return Result
+### GUI CREATION
 Separator = Label(root,padx=20,pady=1, bg="#36454F")
 Separator.grid(row=8,column=0)
 Header = Label(root,padx=1,pady=2, bg="#36454F")
