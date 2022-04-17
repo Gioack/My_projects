@@ -2,7 +2,8 @@
 I post here each cool small project that I do:
 ## [Arithmetic_Formatter](https://github.com/Gioack/My_projects/blob/main/Arithmetic_Formatter.py)
 It formats operations as students in primary school do.
-The user just has to write the operations he wants to format, if he/se wants to see the results too, the users needs to write True after the operations.  
+The user just has to write the operations he wants to format.
+If it's asked, it shows the results too(you can request it by writing True after the list of operations) 
 #### Usage
 Inputs:
 
@@ -157,7 +158,7 @@ Output:
 ********
 ```
 ## [Time_calculator](https://github.com/Gioack/My_projects/blob/main/Time_Calculator.py)
-It is able to add hours and minutes to a specific time. It also shows the number of days that passes from the starting time to the final time. If you specify the name of the starting name, it will return the name of the ending day too.
+It is able to add hours and minutes to a specific time. It also shows the number of days that passes from the starting time to the final time. If the name of the starting day is given, it returns the name of the final day too.
 #### Usage
 This is for sure the easiest one to use, Graphic User Interface makes everything simpler. You just have to run the code and write time as it is shown below. If you don't specify whether the time is AM or PM, it will consider AM.    
 
