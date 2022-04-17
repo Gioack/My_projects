@@ -3,7 +3,7 @@ I post here each cool small project that I do:
 ## [Arithmetic_Formatter](https://github.com/Gioack/My_projects/blob/main/Arithmetic_Formatter.py)
 It formats operations as students in primary school do.
 The user just has to write the operations he wants to format.
-If it's asked, it shows the results too(you can request it by writing True after the list of operations) 
+If it's asked, it shows the results too(you can request it by writing True after the list of operations)
 #### Usage
 Inputs:
 
@@ -120,7 +120,7 @@ num_balls_drawn = 5))
 Output:
 
 ```
-Something close to 3.4 %
+Something close to 10.65 %
 ```   
 ## [Rectangle_and_Square_Calculator](https://github.com/Gioack/My_projects/blob/main/Rectangle_and_Square_Calculator.py)
 It is able to create Rectangles and squares, you can do some cool operations with them like:
